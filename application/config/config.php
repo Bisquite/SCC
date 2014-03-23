@@ -6,7 +6,7 @@ if (! defined ( 'BASEPATH' ))
 	/*
  * |-------------------------------------------------------------------------- | Base Site URL |-------------------------------------------------------------------------- | | URL to your CodeIgniter root. Typically this will be your base URL, | WITH a trailing slash: | |	http://example.com/ | | If this is not set then CodeIgniter will guess the protocol, domain and | path to your installation. |
  */
-$config ['base_url'] = 'http:\\localhost\SCC';
+$config ['base_url'] = 'http://localhost/SCC/';
 
 /*
  * |-------------------------------------------------------------------------- | Index File |-------------------------------------------------------------------------- | | Typically this will be your index.php file, unless you've renamed it to | something else. If you are using mod_rewrite to remove the page set this | variable so that it is blank. |
@@ -81,7 +81,7 @@ $config ['cache_path'] = '';
 /*
  * |-------------------------------------------------------------------------- | Encryption Key |-------------------------------------------------------------------------- | | If you use the Encryption class or the Session class you | MUST set an encryption key. See the user guide for info. |
  */
-$config ['encryption_key'] = '';
+$config ['encryption_key'] = 'sh@lf0rdcr1cketclub1stheb33skn33s';
 
 /*
  * |-------------------------------------------------------------------------- | Session Variables |-------------------------------------------------------------------------- | | 'sess_cookie_name'		= the name you want for the cookie | 'sess_expiration'			= the number of SECONDS you want the session to last. | by default sessions last 7200 seconds (two hours). Set to zero for no expiration. | 'sess_expire_on_close'	= Whether to cause the session to expire automatically | when the browser window is closed | 'sess_encrypt_cookie'		= Whether to encrypt the cookie | 'sess_use_database'		= Whether to save the session data to a database | 'sess_table_name'			= The name of the session database table | 'sess_match_ip'			= Whether to match the user's IP address when reading the session data | 'sess_match_useragent'	= Whether to match the User Agent when reading the session data | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information |
