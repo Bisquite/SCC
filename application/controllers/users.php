@@ -58,6 +58,11 @@ public function edit_user() {
        $this->form_validation->set_error_delimiters('', '<br />');
 
        // Set validation rules
+       // Format: 
+       // set_rules (
+       			// Field - form field
+       			// , Label - human readable label, shown on failures
+       			// , Rules - string containing names of callbacks)
        $this->form_validation->set_rules('first_name', 'First Name', 'required|min_length[1]|max_length[125]');
        $this->form_validation->set_rules('last_name', 'Last Name', 'required|min_length[1]|max_length[125]');
        $this->form_validation->set_rules('email', 'Email', 'required|min_length[1]|max_length[255]|valid_email');
@@ -68,6 +73,7 @@ public function edit_user() {
        } else {
            $id = $this->uri->segment(3); 
        }
+       
                
        // Begin validation
        if ($this->form_validation->run() == FALSE) { // First load, or problem with form           

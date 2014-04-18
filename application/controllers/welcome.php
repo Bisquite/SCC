@@ -20,8 +20,34 @@ class Welcome extends CI_Controller {
 	 * 
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	
+	function __construct() {
+		parent::__construct();
+		$this->load->helper('form');
+		$this->load->helper('url');
+		$this->load->database();
+	}
+		
 	public function index() {
-		$this->load->view ( 'welcome_message' );
+		
+		$this->load->model('Players_model');
+		$data['q_top_batsmen_1sts'] = $this->Players_model->get_top_batsmen_1sts();
+		$data['q_top_batsmen_2nds'] = $this->Players_model->get_top_batsmen_2nds();
+		$data['q_top_batsmen_sun'] = $this->Players_model->get_top_batsmen_sun();
+		
+		$data['q_top_bowlers_1sts'] = $this->Players_model->get_top_bowlers_1sts();
+		$data['q_top_bowlers_2nds'] = $this->Players_model->get_top_bowlers_2nds();
+		$data['q_top_bowlers_sun'] = $this->Players_model->get_top_bowlers_sun();
+		
+		$data['q_top_fielders_1sts'] = $this->Players_model->get_top_fielders_1sts();
+		$data['q_top_fielders_2nds'] = $this->Players_model->get_top_fielders_2nds();
+		$data['q_top_fielders_sun'] = $this->Players_model->get_top_fielders_sun();
+		
+		
+		/** Load views **/
+		$this->load->view ('header');
+		$this->load->view ('body', $data);
+		$this->load->view ('footer');
 	}
 }
 
