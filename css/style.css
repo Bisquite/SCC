@@ -21,9 +21,14 @@ input, select { vertical-align:middle; font-weight:normal;}
 img {border:0; vertical-align:top; text-align:left;}
 object { vertical-align:top; outline:none;}
 
+#form { float:left; padding:7px 12px 0 0;}
+/*#form fieldset { border:none; background:url(../images/bg.gif) no-repeat left top; width:225px; height:22px;}*/
+#form input.text { width:187px; background:none; border:none; padding:2px 0 2px 7px; font-size:.85em;}
+#form input.submit { width:30px; height:22px; border:none; background:none; cursor:pointer;}
+
 #search-form { float:right; padding:7px 12px 0 0;}
 #search-form fieldset { border:none; background:url(../images/search-bg.gif) no-repeat left top; width:225px; height:22px;}
-#search-form input.text { width:187px; background:none; border:none; padding:2px 0 2px 7px; font-size:.85em;}
+#search-form input.text { width:187px; background:none; border:none; padding:2px 0 2px 7px; font-size:.85em; cursor:pointer;}
 #search-form input.submit { width:30px; height:22px; border:none; background:none; cursor:pointer;}
 
 /*==================list====================*/

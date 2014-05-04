@@ -7,8 +7,8 @@ class Matches_model extends CI_Model {
 
    /* Create matches */
    public function process_create_match($data) {
-   	$query = 'insert into matches (
-   			  '
+   //	$query = 'insert into matches (
+   			  
    	if ($this->db->insert('matches', $data)) {
    		return true;
    	} else {
@@ -61,6 +61,22 @@ class Matches_model extends CI_Model {
    	return $this->db->query($query);
    }
    
+   public function get_match_teams_dropdown($match_id) {
+   	$query = "
+   			select a.home_team_id as team_id, th.team_name
+			from matches a
+			  inner join teams th
+			  on a.home_team_id = th.team_id
+			where a.match_id = $match_id
+			union
+			select a.away_team_id as team_id, ta.team_name
+			from matches a
+			  inner join teams ta
+			  on a.away_team_id = ta.team_id
+			where a.match_id = $match_id";
+   	return $this->db->query($query);
+   }
+   
    /* ----------------------------------------*/
 
    
@@ -69,9 +85,9 @@ class Matches_model extends CI_Model {
        return $this->db->query($query);
    } 
    
-   public function get_matches_by_year_50() {
-   		$query_50 = "select * from matches where match_id between 49 and 51";
-   		return $this->db->query($query_50);
+   public function get_match_details($match_id) {
+   		$query = "select * from matches where match_id = $match_id";
+   		return $this->db->query($query);
    }
    
    

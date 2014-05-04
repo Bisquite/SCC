@@ -99,5 +99,62 @@ class Matches extends CI_Controller {
    }
  
    
+   /* ------------------------------------------
+    * Enter new scorecard
+   * ------------------------------------------*/
+    
+   public function enter_scorecard() {
+   
+   	// Load support assets
+   	$this->load->library('form_validation');
+   	$this->form_validation->set_error_delimiters('', '<br />');
+   	 
+   	// Set validation rules
+   	$this->form_validation->set_rules('first_inns_no_of_players', 'Second inns no of players', 'greater_than[5]|less_than[15]|integer|is_natural');
+   	$this->form_validation->set_rules('second_inns_no_of_players', 'Second inns no of players', 'greater_than[5]|less_than[15]|integer|is_natural');
+   	 
+   	if ($this->input->post()) {
+   		$match_id = $this->input->post('match_id');
+   	} else {
+   		$match_id = $this->uri->segment(3);
+   	}
+   
+   	 
+   	// Begin validation
+   	if ($this->form_validation->run() == FALSE) { // First load, or problem with form
+   		$data['first_inns_no_of_players'] = array('name' => 'first_inns_no_of_players', 'value' => set_value('first_inns_no_of_players', 11));
+   		$data['second_inns_no_of_players'] = array('name' => 'second_inns_no_of_players', 'value' => set_value('second_inns_no_of_players', 11));
+   		//$data['match_time'] = array('name' => 'match_time', 'id' => 'match_time', 'value' => set_value('match_time', ''), 'maxlength'   => '100', 'size' => '35');
+   		//$data['allow_draws_flag'] = array('name' => 'allow_draws_flag', 'id' => 'allow_draws_flag', 'value' => set_value('allow_draws_flag', ''));
+   
+   		// Load data model for team dropdown lists
+   		$data['q_match_teams_dropdown'] = $this->Matches_model->get_match_teams_dropdown($match_id);
+   		$data['q_match_details'] = $this->Matches_model->get_match_details($match_id);
+   		
+   	  
+   		// Load views
+   		$this->load->view ('header');
+   		$this->load->view ('matches/enter_scorecard', $data);
+   		$this->load->view ('footer');
+   		 
+   	} else {
+   		// Validation passed, now escape the data and put into an array
+   		$data = array(
+   				'match_date' => $this->input->post('match_date'),
+   		);
+   
+   		//$this->load->view ('matches/new_match_confirm', $data);
+   		 
+   		//if ($this->Matches_model->process_create_match($data)) {
+   			//redirect('matches/new_match_confirm'. $data);
+   		//}
+   	}
+   	 
+   
+   }
+   
+    
+   
+    
 
 }
