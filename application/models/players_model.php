@@ -7,7 +7,18 @@ class Players_model extends CI_Model {
 
    /* Set variables */
    public $current_season = 2008;
-  
+   
+   /* ------------------------------------------
+    * Person queries
+   * ------------------------------------------*/
+   public function get_person_dropdown() {
+   
+   	$query = "	    select a.person_id
+   						, a.initials_last_name
+					from persons a
+					order by a.last_name;";
+   	return $this->db->query($query);
+   }
  
    
    public function get_top_batsmen_1sts() {
@@ -143,6 +154,55 @@ class Players_model extends CI_Model {
    					and team_id = 3
 				order by a.dismissals_half_st desc
 				limit 5;";
+   	return $this->db->query($query);
+   }
+   
+   
+   
+   /* ------------------------------------------
+    * Player profiles
+   * ------------------------------------------*/
+   public function get_player_profile_stats_cs($person_id) {				// cs = abbv. "current season"
+   	$query = "select person_id
+   					, initials_last_name
+   					, season
+   					, team_id
+   					, bat_runs
+   					, high_score
+   					, bat_avg
+   					, wickets
+   					, bowl_runs
+   					, bowl_avg, overs
+   					, odd_balls
+   					, catches
+   					, stumpings
+   					, dismissals
+   					, dismissals_half_st 
+			  from player_stats_season_team a
+   					inner join teams b
+  						on a.team_id = b.team_id
+			  where person_id = " . $person_id . "
+				  and season = " . $this->current_season . "";
+   	return $this->db->query($query);
+   }
+   
+   public function get_player_profile($person_id) {			
+   	$query = "select 
+				  first_name
+				  , last_name
+				  , dob
+				  , email
+				  , bat_hand
+				  , bat_type
+				  , bowl_arm
+				  , bowl_type
+				  , field_arm
+				  , field_type
+				  , field_special
+				  , profile_public
+				  , profile_private
+			  from persons
+			  where person_id = " . $person_id;
    	return $this->db->query($query);
    }
    
