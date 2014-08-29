@@ -143,6 +143,7 @@ $config ['proxy_ips'] = '';
  * |-------------------------------------------------------------------------- | Custom constants |-------------------------------------------------------------------------- | | These modes are used when working with fopen()/popen() |
 */
 $config ['current_season'] = 2008;
+$config ['send_from_email'] = 'donotreply@shalfordcc.co.uk';
 
 
 
