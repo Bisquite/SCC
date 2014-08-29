@@ -41,7 +41,7 @@
          	<ul class="nav">
             	<li><a href="index.html" class="current">Home</a></li> 
                <li><a href="index-1.html">Cricket News</a></li>  
-               <li><a href="#">Stats &amp; scores</a></li>  
+               <li><a href="stats/view_stats">Stats &amp; scores</a></li>  
                <li><a href="#">Teams</a></li>
                <li><a href="#">Video</a></li>
                <li><a href="#">Fans</a></li>
