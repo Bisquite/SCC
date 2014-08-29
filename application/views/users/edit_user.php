@@ -20,7 +20,7 @@
          <td>User Is Active?</td>
          <td><?php echo form_checkbox($is_active); ?></td>
      </tr>
-     <?php echo form_hidden($id); ?>
+     <?php echo form_hidden($user_id); ?>
    </table>
    <?php echo form_submit('submit', 'Update'); ?>
    or <?php echo anchor('users/index', 'cancel'); ?>

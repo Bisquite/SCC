@@ -7,6 +7,6 @@
        <?php echo $row->first_name . ' ' . $row->last_name; ?>
        <?php echo form_submit('submit', 'Delete'); ?>
        or <?php echo anchor('users/index', 'cancel'); ?>
-       <?php echo form_hidden('id', $row->id); ?>
+       <?php echo form_hidden('user_id', $row->user_id); ?>
    <?php endforeach; ?>
 </form>
