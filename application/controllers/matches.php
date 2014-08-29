@@ -28,19 +28,30 @@ class Matches extends CI_Controller {
 	return true;
    }
    
-   public function view_matches_by_year() {        
-       $data['query'] = $this->Matches_model->get_matches_by_year();
-       $data['query_50'] = $this->Matches_model->get_matches_by_year_50();
-       $this->load->view('matches/view_matches_by_year', $data);
+   
+   /* ------------------------------------------
+    * Viewing matches and scorecards
+   * ------------------------------------------*/
+   public function view_matches() {  
+   	if ($this->input->post()) {
+   		$year = $this->input->post('year');
+   	} else {
+   		$year = date("Y") - 6;
+   	}
+   	      
+       $data['q_matches_by_year'] = $this->Matches_model->get_matches_by_year($year);
+	   $this->load->view ('header');
+       $this->load->view('matches/view_matches', $data);
+	   $this->load->view ('footer');
    }
    
-   public function view_match_innings() {
-   	$data['query'] = $this->Matches_model->get_match_innings();
-   	$this->load->view('matches/view_match_innings', $data);
-   }
 
    public function view_scorecard() {
-   	$data['query'] = $this->Matches_model->get_scorecard($match_id);
+   	$match_id = $this->uri->segment(3);
+   	
+   	$data['q_first_inns'] = $this->Matches_model->get_scorecard_first_inns($match_id);
+   	$data['q_second_inns'] = $this->Matches_model->get_scorecard_second_inns($match_id);
+   	
    	$this->load->view('matches/view_scorecard', $data);
    }
    

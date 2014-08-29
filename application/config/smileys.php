@@ -269,8 +269,8 @@ $smileys = array (
 				'question' 
 		)  // no comma after last item
 
-		)// no comma after last item
-null;
+		)  // no comma after last item
+;
 
 /* End of file smileys.php */
 /* Location: ./application/config/smileys.php */
